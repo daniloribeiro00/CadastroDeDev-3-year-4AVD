@@ -134,13 +134,13 @@ namespace cadastro_de_dev.Controllers
             return _context.DesenvolvedorLinguagens.Any(d => d.DesenvolvedorID == id);
         }
 
-        public async Task<IActionResult> Details(long? id)
+        public async Task<IActionResult> Details(long? id, long? id2)
         {
-            if (id == null)
+            if (id == null || id2 == null)
             {
                 return NotFound();
             }
-            var desenvolvedorLinguagem = await _context.DesenvolvedorLinguagens.Include(d => d.Desenvolvedor).Include(l => l.Linguagem).SingleOrDefaultAsync(m => m.DesenvolvedorID == id);
+            var desenvolvedorLinguagem = await _context.DesenvolvedorLinguagens.Include(d => d.Desenvolvedor).Include(l => l.Linguagem). SingleOrDefaultAsync(m => m.DesenvolvedorID == id);
             if (desenvolvedorLinguagem == null)
             {
                 return NotFound();
