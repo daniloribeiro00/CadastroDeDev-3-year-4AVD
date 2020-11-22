@@ -10,7 +10,8 @@ CREATE OR REPLACE PROCEDURE DevDeInst(inst IN "Empresas"."EmpresaID"%TYPE)
 AS 
 c_devinst SYS_REFCURSOR;
 BEGIN 
-    OPEN c_devinst FOR 'SELECT "DesenvolvedorID", "Nome", "Email", "Telefone", "EmpresaID"
+    OPEN c_devinst FOR
+    'SELECT "DesenvolvedorID", "Nome", "Email", "Telefone", "EmpresaID"
     FROM "Desenvolvedores" WHERE "EmpresaID" = ' || inst;
     DBMS_SQL.RETURN_RESULT(c_devinst);
 END;
@@ -33,7 +34,7 @@ END;
 /
 
 VARIABLE cursor_output refcursor;
-EXECUTE LingDeDev(1, :cursor_output);
+EXECUTE LingDeDev(21, :cursor_output);
 
 -------------------- FUNCTIONS
 
@@ -55,9 +56,7 @@ END;
 DECLARE
    v_retorno VARCHAR2(30);
 BEGIN
-   --EXECUTE IMMEDIATE 'CALL LingEdit(1, PHP) INTO :v_retorno'
-   --USING OUT v_retorno;
-   v_retorno := LingEdit(3, 'C#');
+   v_retorno := LingEdit(23, 'C');
    DBMS_OUTPUT.put_line('Retorno: '|| v_retorno);
 END;
 /
@@ -82,7 +81,7 @@ END;
 /
 
 DECLARE
-   v_call LONG := 3;
+   v_call LONG := 23;
    v_retorno VARCHAR2(30);
 BEGIN
    v_retorno := LingDelete(v_call);
