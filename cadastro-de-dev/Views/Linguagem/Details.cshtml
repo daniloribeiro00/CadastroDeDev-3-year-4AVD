@@ -1,0 +1,125 @@
+﻿@model cadastro_de_dev.Models.Linguagem
+
+@{
+    ViewData["Title"] = "Detalhes da Linguagem";
+}
+
+<style>
+    * {
+        margin: 0;
+        border: 0;
+        padding: 0;
+    }
+
+    .bottom {
+        margin: 0 10px 0 10px;
+    }
+
+    a, a:link, a:hover, a:visited {
+        text-decoration: none;
+    }
+
+    ul, ol, li {
+        list-style: none;
+    }
+
+    body {
+        background-color: #212121;
+    }
+
+    span, li, h1, button, a {
+        font-family: Arial, Helvetica, sans-serif;
+        color: #ffff;
+        font-size: 16px;
+        font-weight: 500;
+    }
+
+    span, li, button, a {
+        font-size: 16px;
+        font-weight: 500;
+    }
+
+    h1 {
+        font-size: 22px;
+        font-weight: 700;
+    }
+
+    li {
+        margin: 0 0 0 10px;
+    }
+
+    tr, td {
+        color: white;
+    }
+
+    .table-center {
+        border-collapse: separate;
+        border-spacing: 80px 0;
+        margin-bottom: 35px;
+    }
+
+    .global-list {
+        margin: 60px auto;
+    }
+
+    .dev-info {
+        border: 2px solid #d1cece;
+        width: 100%;
+        padding: 20px 10px;
+    }
+
+        .dev-info:not(#fist-dev) {
+            margin: 40px 0 0 0;
+        }
+
+    button {
+        background-color: #24B32B;
+        padding: 10px 20px;
+    }
+
+    a:hover {
+        color: #ffffff;
+    }
+
+    @@media screen and (min-width: 520px) {
+        .global-list {
+            width: 520px;
+        }
+
+        input {
+            width: 680px;
+        }
+    }
+</style>
+<div class="global-list">
+    <div id="first-dev" class="dev-info">
+        <div class="text-center">
+            <h1>
+                Detalhes da Linguagem
+            </h1>
+        </div>
+        <br />
+        <div class="text-center">
+            <table class="table-center">
+                <tr>
+                    <td class="font-weight-bolder">
+                        Nome da Linguagem
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.NomeLinguagem)
+                    </td>
+                </tr>
+            </table>
+            <div lass="mt-4 d-flex flex-row justify-content-around">
+                <button>
+                    <a asp-action="Edit" asp-route-id="@Model.LinguagemID">Editar</a>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="mt-4 d-flex flex-row justify-content-around">
+    <button>
+        <a asp-action="Index">Voltar</a>
+    </button>
+</div>

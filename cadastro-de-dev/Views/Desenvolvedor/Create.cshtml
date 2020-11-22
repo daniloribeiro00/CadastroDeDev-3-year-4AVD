@@ -1,0 +1,141 @@
+﻿@model cadastro_de_dev.Models.Desenvolvedor
+
+@{
+    ViewData["Title"] = "Cadastro de Desenvolvedor";
+}
+
+<style>
+    * {
+        margin: 0;
+        border: 0;
+        padding: 0;
+    }
+
+    a, a:link, a:hover, a:visited {
+        text-decoration: none;
+    }
+
+    ul, ol, li {
+        list-style: none;
+    }
+
+    body {
+        background-color: #212121;
+    }
+
+    .global-home {
+        margin: 60px auto;
+        border: 2px solid #d1cece;
+        padding: 20px 30px;
+        width: 100%;
+    }
+
+    #select1, #select2 {
+        border-radius: 0px;
+        height: 42px;
+        padding: 5px 3px;
+        font-family: Arial, Helvetica, sans-serif;
+        line-height: 1.8;
+        font-size: 18px;
+    }
+
+    label, span, button, h1, input, select, a {
+        font-family: Arial, Helvetica, sans-serif;
+        line-height: 1.8;
+    }
+
+    label, span, button, input, select, a {
+        font-size: 18px;
+        font-weight: 500;
+    }
+
+    label, span, button, h1, a {
+        color: #ffffff;
+    }
+
+    h1 {
+        font-size: 22px;
+        font-weight: 700;
+    }
+
+    button {
+        background-color: #24B32B;
+        padding: 10px 20px;
+    }
+
+    input, select {
+        padding: 5px 3px;
+        margin-right: 10px;
+    }
+
+    input {
+        width: 99%;
+    }
+
+    a:hover {
+        color: #ffffff;
+    }
+
+    @@media screen and (max-width: 400px) {
+        select {
+            margin: 10px 0 10px 0;
+        }
+    }
+
+    @@media screen and (min-width: 800px) {
+        .global-home {
+            width: 710px;
+        }
+
+        input {
+            width: 645px;
+        }
+    }
+</style>
+<div class="global-home">
+    <div class="text-center">
+        <h1>
+            Cadastro de Desenvolvedor
+        </h1>
+    </div>
+
+    <form asp-action="Create" class="">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="Nome" class="control-label"></label>
+            <input asp-for="Nome"/>
+            <span asp-validation-for="Nome" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Email" class="control-label"></label>
+            <input asp-for="Email" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Telefone" class="control-label">Celular</label>
+            <input asp-for="Telefone" />
+            <span asp-validation-for="Telefone" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="EmpresaID" class="control-label">Selecione uma empresa que você deseja trabalhar</label><br />
+            <select asp-for="EmpresaID" id="select2" class="form-control" asp-items="@(new SelectList(ViewBag.Empresas, "EmpresaID", "NomeEmpresa"))"></select>
+        </div>
+        <div class="mt-4 d-flex flex-row justify-content-around">
+            <button type="submit">
+                Cadastrar
+            </button>
+            <button type="reset">
+                Limpar
+            </button>
+        </div>
+    </form>
+</div>
+<div class="text-center mt-4">
+    <button>
+        <a asp-action="Index">Voltar</a>
+    </button>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

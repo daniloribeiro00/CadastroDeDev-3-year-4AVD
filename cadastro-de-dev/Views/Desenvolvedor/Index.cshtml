@@ -1,0 +1,174 @@
+﻿@model IEnumerable<cadastro_de_dev.Models.Desenvolvedor>
+
+@{
+    ViewData["Title"] = "Lista de Desenvolvedores";
+}
+
+<style>
+    * {
+        margin: 0;
+        border: 0;
+        padding: 0;
+    }
+
+    .bottom {
+        margin: 0 10px 0 10px;
+    }
+
+    a, a:link, a:hover, a:visited {
+        text-decoration: none;
+    }
+
+    ul, ol, li {
+        list-style: none;
+    }
+
+    body {
+        background-color: #212121;
+    }
+
+    span, li, h1, button, a {
+        font-family: Arial, Helvetica, sans-serif;
+        color: #ffff;
+        font-size: 16px;
+        font-weight: 500;
+    }
+
+    span, li, button, a {
+        font-size: 16px;
+        font-weight: 500;
+    }
+
+    h1 {
+        font-size: 22px;
+        font-weight: 700;
+    }
+
+    li {
+        margin: 0 0 0 10px;
+    }
+
+    tr, td {
+        color: white;
+    }
+
+    .table-center {
+        border-collapse: separate;
+        border-spacing: 20px 0;
+    }
+
+    .global-list {
+        margin: 60px auto;
+    }
+
+    .dev-info {
+        border: 2px solid #d1cece;
+        width: 100%;
+        padding: 20px 10px;
+    }
+
+    .dev-info:not(#fist-dev) {
+        margin: 40px 0 0 0;
+    }
+
+    button {
+        background-color: #24B32B;
+        padding: 10px 20px;
+    }
+
+    a:hover {
+        color: #ffffff;
+    }
+
+    @@media screen and (min-width: 900px) {
+        .global-list {
+            width: 900px;
+        }
+
+        input {
+            width: 870px;
+        }
+    }
+</style>
+<div class="global-list">
+    <h1 style="text-align:center; font-size:x-large">
+        DESENVOLVEDORES
+    </h1>
+    <div id="first-dev" class="dev-info">
+        <div class="text-center">
+            <table class="table-center">
+                <thead>
+                    <tr>
+                        <th>
+                            Nome do Desenvolvedor
+                        </th>
+                        <th>
+                            Email
+                        </th>
+                        <th>
+                            Celular
+                        </th>
+                        <th>
+                            Empresa
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nome)
+                            <span></span>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Email)
+                            <span></span>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Telefone)
+                            <span></span>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Empresa.NomeEmpresa)
+                            <span></span>
+                        </td>
+                        <td>
+                        <a asp-action="Details" asp-route-id="@item.DesenvolvedorID">Detalhes</a> |
+                        <a asp-action="Edit" asp-route-id="@item.DesenvolvedorID">Editar</a> |
+                        <a asp-action="Delete" asp-route-id="@item.DesenvolvedorID">Excluir</a>
+                        <a asp-action="ShowLangs" asp-route-id="@item.DesenvolvedorID">Mostrar Linguagem</a>
+                        </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    <div class="mt-4 text-center">
+        <button class="bottom">
+            <a asp-area="" asp-controller="Desenvolvedor" asp-action="Create">
+                Cadastrar Novo Desenvolvedor
+            </a>
+        </button>
+    </div>
+    <div class="mt-4 text-center">
+        <button class="bottom">
+            <a asp-area="" asp-controller="Empresa" asp-action="Index">
+                Empresas Cadastradas
+            </a>
+        </button>
+        <button class="bottom">
+            <a asp-area="" asp-controller="Linguagem" asp-action="Index">
+                Linguagens Cadastradas
+            </a>
+        </button>
+        <button class="bottom">
+            <a asp-area="" asp-controller="DesenvolvedorLinguagem" asp-action="Index">
+                Linguagens por Desenvolvedor
+            </a>
+        </button>
+    </div>
+</div>
