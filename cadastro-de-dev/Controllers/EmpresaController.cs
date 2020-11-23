@@ -138,6 +138,7 @@ namespace cadastro_de_dev.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+
         public async Task<IActionResult> ShowDevs(long? id)
         {
             if (id == null)

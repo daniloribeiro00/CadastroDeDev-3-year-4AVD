@@ -59,12 +59,14 @@ namespace cadastro_de_dev.Migrations
                 name: "DesenvolvedorLinguagens",
                 columns: table => new
                 {
+                    DesenvolvedorLinguagemID = table.Column<long>(nullable: false)
+                        .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
                     LinguagemID = table.Column<long>(nullable: false),
                     DesenvolvedorID = table.Column<long>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_DesenvolvedorLinguagens", x => new { x.LinguagemID, x.DesenvolvedorID });
+                    table.PrimaryKey("PK_DesenvolvedorLinguagens", x => x.DesenvolvedorLinguagemID);
                     table.ForeignKey(
                         name: "FK_DesenvolvedorLinguagens_Desenvolvedores_DesenvolvedorID",
                         column: x => x.DesenvolvedorID,
@@ -88,6 +90,11 @@ namespace cadastro_de_dev.Migrations
                 name: "IX_DesenvolvedorLinguagens_DesenvolvedorID",
                 table: "DesenvolvedorLinguagens",
                 column: "DesenvolvedorID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_DesenvolvedorLinguagens_LinguagemID",
+                table: "DesenvolvedorLinguagens",
+                column: "LinguagemID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

@@ -10,7 +10,7 @@ using cadastro_de_dev.Data;
 namespace cadastro_de_dev.Migrations
 {
     [DbContext(typeof(CadastroDeDevContext))]
-    [Migration("20201118005834_initial")]
+    [Migration("20201123022923_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -49,15 +49,22 @@ namespace cadastro_de_dev.Migrations
 
             modelBuilder.Entity("cadastro_de_dev.Models.DesenvolvedorLinguagem", b =>
                 {
-                    b.Property<long?>("LinguagemID")
+                    b.Property<long?>("DesenvolvedorLinguagemID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("NUMBER(19)")
+                        .HasAnnotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<long>("DesenvolvedorID")
                         .HasColumnType("NUMBER(19)");
 
-                    b.Property<long?>("DesenvolvedorID")
+                    b.Property<long>("LinguagemID")
                         .HasColumnType("NUMBER(19)");
 
-                    b.HasKey("LinguagemID", "DesenvolvedorID");
+                    b.HasKey("DesenvolvedorLinguagemID");
 
                     b.HasIndex("DesenvolvedorID");
+
+                    b.HasIndex("LinguagemID");
 
                     b.ToTable("DesenvolvedorLinguagens");
                 });

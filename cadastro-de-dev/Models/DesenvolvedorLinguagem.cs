@@ -7,9 +7,10 @@ namespace cadastro_de_dev.Models
 {
     public class DesenvolvedorLinguagem
     {
-        public long? LinguagemID { get; set; }
+        public long? DesenvolvedorLinguagemID { get; set; }
+        public long LinguagemID { get; set; }
         public Linguagem Linguagem { get; set; }
-        public long? DesenvolvedorID { get; set; }
+        public long DesenvolvedorID { get; set; }
         public Desenvolvedor Desenvolvedor { get; set; }
     }
 }

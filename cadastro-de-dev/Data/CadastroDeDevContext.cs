@@ -23,7 +23,7 @@ namespace cadastro_de_dev.Data
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<DesenvolvedorLinguagem>()
-                .HasKey(cd => new { cd.LinguagemID, cd.DesenvolvedorID });
+                .HasKey(cd => new { cd.DesenvolvedorLinguagemID });
             modelBuilder.Entity<DesenvolvedorLinguagem>()
                 .HasOne(c => c.Linguagem)
                 .WithMany(cd => cd.DesenvolvedorLinguagem)

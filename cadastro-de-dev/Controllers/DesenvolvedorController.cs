@@ -98,12 +98,10 @@ namespace cadastro_de_dev.Controllers
                 try
                 {
                     _context.Update(desenvolvedor);
-                    await _context.SaveChangesAsync();
-                    
+                    await _context.SaveChangesAsync(); 
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    
                     if (!DesenvolvedorExists(desenvolvedor.DesenvolvedorID))
                     {
                         return NotFound();

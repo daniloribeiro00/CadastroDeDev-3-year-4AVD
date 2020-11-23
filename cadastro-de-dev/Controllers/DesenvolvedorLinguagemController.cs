@@ -71,7 +71,7 @@ namespace cadastro_de_dev.Controllers
             {
                 return NotFound();
             }
-            var desenvolvedorLinguagem = await _context.DesenvolvedorLinguagens.Include(d => d.Desenvolvedor).Include(l => l.Linguagem).SingleOrDefaultAsync(m => m.DesenvolvedorID == id);
+            var desenvolvedorLinguagem = await _context.DesenvolvedorLinguagens.Include(d => d.Desenvolvedor).Include(l => l.Linguagem).SingleOrDefaultAsync(m => m.DesenvolvedorLinguagemID == id);
             if (desenvolvedorLinguagem == null)
             {
                 return NotFound();
@@ -98,9 +98,9 @@ namespace cadastro_de_dev.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(long? id, [Bind("DesenvolvedorID, LinguagemID")] DesenvolvedorLinguagem desenvolvedorLinguagem)
+        public async Task<IActionResult> Edit(long? id, [Bind("DesenvolvedorLinguagemID, DesenvolvedorID, LinguagemID")] DesenvolvedorLinguagem desenvolvedorLinguagem)
         {
-            if (id != desenvolvedorLinguagem.DesenvolvedorID)
+            if (id != desenvolvedorLinguagem.DesenvolvedorLinguagemID)
             {
                 return NotFound();
             }
@@ -110,12 +110,10 @@ namespace cadastro_de_dev.Controllers
                 {
                     _context.Update(desenvolvedorLinguagem);
                     await _context.SaveChangesAsync();
-
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-
-                    if (!DesenvolvedorLinguagemExists(desenvolvedorLinguagem.DesenvolvedorID))
+                    if (!DesenvolvedorLinguagemExists(desenvolvedorLinguagem.DesenvolvedorLinguagemID))
                     {
                         return NotFound();
                     }
@@ -131,16 +129,16 @@ namespace cadastro_de_dev.Controllers
 
         public bool DesenvolvedorLinguagemExists(long? id)
         {
-            return _context.DesenvolvedorLinguagens.Any(d => d.DesenvolvedorID == id);
+            return _context.DesenvolvedorLinguagens.Any(d => d.DesenvolvedorLinguagemID == id);
         }
 
-        public async Task<IActionResult> Details(long? id, long? id2)
+        public async Task<IActionResult> Details(long? id)
         {
-            if (id == null || id2 == null)
+            if (id == null)
             {
                 return NotFound();
             }
-            var desenvolvedorLinguagem = await _context.DesenvolvedorLinguagens.Include(d => d.Desenvolvedor).Include(l => l.Linguagem). SingleOrDefaultAsync(m => m.DesenvolvedorID == id);
+            var desenvolvedorLinguagem = await _context.DesenvolvedorLinguagens.Include(d => d.Desenvolvedor).Include(l => l.Linguagem). SingleOrDefaultAsync(m => m.DesenvolvedorLinguagemID == id);
             if (desenvolvedorLinguagem == null)
             {
                 return NotFound();
@@ -155,7 +153,7 @@ namespace cadastro_de_dev.Controllers
             {
                 return NotFound();
             }
-            var desenvolvedorLinguagem = await _context.DesenvolvedorLinguagens.Include(d => d.Desenvolvedor).Include(l => l.Linguagem).SingleOrDefaultAsync(m => m.DesenvolvedorID == id);
+            var desenvolvedorLinguagem = await _context.DesenvolvedorLinguagens.Include(d => d.Desenvolvedor).Include(l => l.Linguagem).SingleOrDefaultAsync(m => m.DesenvolvedorLinguagemID == id);
             if (desenvolvedorLinguagem == null)
             {
                 return NotFound();
@@ -168,7 +166,7 @@ namespace cadastro_de_dev.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(long? id)
         {
-            var desenvolvedorLinguagem = await _context.DesenvolvedorLinguagens.Include(d => d.Desenvolvedor).Include(l => l.Linguagem).SingleOrDefaultAsync(m => m.DesenvolvedorID == id);
+            var desenvolvedorLinguagem = await _context.DesenvolvedorLinguagens.Include(d => d.Desenvolvedor).Include(l => l.Linguagem).SingleOrDefaultAsync(m => m.DesenvolvedorLinguagemID == id);
             _context.DesenvolvedorLinguagens.Remove(desenvolvedorLinguagem);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
