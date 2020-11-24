@@ -10,7 +10,7 @@ using cadastro_de_dev.Data;
 namespace cadastro_de_dev.Migrations
 {
     [DbContext(typeof(CadastroDeDevContext))]
-    [Migration("20201123022923_initial")]
+    [Migration("20201124021917_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -17,7 +17,7 @@ BEGIN
 END;
 /
 
-EXECUTE DevDeInst(1);
+EXECUTE DevDeInst(2);
 
 select * from "Empresas";
 
@@ -34,7 +34,8 @@ END;
 /
 
 VARIABLE cursor_output refcursor;
-EXECUTE LingDeDev(21, :cursor_output);
+EXECUTE LingDeDev(1, :cursor_output);
+
 
 -------------------- FUNCTIONS
 
@@ -56,11 +57,10 @@ END;
 DECLARE
    v_retorno VARCHAR2(30);
 BEGIN
-   v_retorno := LingEdit(23, 'C');
+   v_retorno := LingEdit(4, 'PHP');
    DBMS_OUTPUT.put_line('Retorno: '|| v_retorno);
 END;
 /
-
 
 SELECT * FROM "Linguagens";
 
@@ -81,7 +81,7 @@ END;
 /
 
 DECLARE
-   v_call LONG := 23;
+   v_call LONG := 2;
    v_retorno VARCHAR2(30);
 BEGIN
    v_retorno := LingDelete(v_call);

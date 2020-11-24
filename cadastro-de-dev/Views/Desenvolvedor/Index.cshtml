@@ -54,7 +54,7 @@
 
     .table-center {
         border-collapse: separate;
-        border-spacing: 20px 0;
+        border-spacing: 20px 10px;
     }
 
     .global-list {
@@ -62,7 +62,6 @@
     }
 
     .dev-info {
-        border: 2px solid #d1cece;
         width: 100%;
         padding: 20px 10px;
     }
@@ -80,9 +79,9 @@
         color: #ffffff;
     }
 
-    @@media screen and (min-width: 900px) {
+    @@media screen and (min-width: 1000px) {
         .global-list {
-            width: 900px;
+            width: 88%;
         }
 
         input {
@@ -94,7 +93,7 @@
     <h1 style="text-align:center; font-size:x-large">
         DESENVOLVEDORES
     </h1>
-    <div id="first-dev" class="dev-info">
+    <div id="first-dev" class="dev-info w-100">
         <div class="text-center">
             <table class="table-center">
                 <thead>
@@ -150,24 +149,24 @@
     <div class="mt-4 text-center">
         <button class="bottom">
             <a asp-area="" asp-controller="Desenvolvedor" asp-action="Create">
-                Cadastrar Novo Desenvolvedor
+                Cadastrar
             </a>
         </button>
     </div>
     <div class="mt-4 text-center">
-        <button class="bottom">
+        <button class="bottom mt-4 mt-md-0">
             <a asp-area="" asp-controller="Empresa" asp-action="Index">
-                Empresas Cadastradas
+                Empresas
             </a>
         </button>
-        <button class="bottom">
-            <a asp-area="" asp-controller="Linguagem" asp-action="Index">
-                Linguagens Cadastradas
-            </a>
-        </button>
-        <button class="bottom">
+        <button class="bottom mt-4 mt-md-0">
             <a asp-area="" asp-controller="DesenvolvedorLinguagem" asp-action="Index">
                 Linguagens por Desenvolvedor
+            </a>
+        </button>
+        <button class="bottom mt-4 mt-md-0">
+            <a asp-area="" asp-controller="Linguagem" asp-action="Index">
+                Linguagens
             </a>
         </button>
     </div>

@@ -62,7 +62,6 @@
     }
 
     .dev-info {
-        border: 2px solid #d1cece;
         width: 100%;
         padding: 20px 10px;
     }
@@ -81,9 +80,9 @@
         color: #ffffff;
     }
 
-    @@media screen and (min-width: 500px) {
+    @@media screen and (min-width: 750px) {
         .global-list {
-            width: 500px;
+            width: 750px;
         }
 
         input {
@@ -117,7 +116,7 @@
                                 <a asp-action="Details" asp-route-id="@item.EmpresaID">Detalhes</a> |
                                 <a asp-action="Edit" asp-route-id="@item.EmpresaID">Editar</a> |
                                 <a asp-action="Delete" asp-route-id="@item.EmpresaID">Excluir</a> |
-                                <a asp-action="ShowDevs" asp-route-id="@item.EmpresaID">Mostrar Desenvolvedores por Empresa</a>
+                                <a asp-action="ShowDevs" asp-route-id="@item.EmpresaID">Desenvolvedores por Empresa</a>
                             </td>
                         </tr>
                     }
@@ -128,12 +127,12 @@
 
 
     <div class="mt-4 text-center">
-        <button class="bottom">
+        <button class="bottom mt-4 mt-md-0">
             <a asp-area="" asp-controller="Empresa" asp-action="Create">
                 Cadastrar Nova Empresa
             </a>
         </button>
-        <button class="bottom">
+        <button class="bottom mt-4 mt-md-0">
             <a asp-area="" asp-controller="Desenvolvedor" asp-action="Index">
                 Voltar
             </a>

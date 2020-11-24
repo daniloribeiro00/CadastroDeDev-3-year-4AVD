@@ -6,6 +6,7 @@ using cadastro_de_dev.Data;
 using cadastro_de_dev.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Oracle.ManagedDataAccess.Client;
 
 namespace cadastro_de_dev.Controllers
 {
