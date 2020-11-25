@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Odbc;
+using System.Data.OleDb;
 using System.Linq;
 using System.Threading.Tasks;
 using cadastro_de_dev.Data;
@@ -78,6 +80,39 @@ namespace cadastro_de_dev.Controllers
                 {
                     _context.Update(linguagem);
                     await _context.SaveChangesAsync();
+
+                    //----------------------------------TENTAMOS, MAS NÃO CONSEGUIMOS...-------------------------- 
+
+                    //var conn = new OracleConnection("User Id=CADDEVDB;Password=CADDEVDB;Data Source=127.0.0.1:1521/xe;");
+
+                    //conn.Open();
+                    //OracleCommand cmd = new OracleCommand();
+                    //cmd.Connection = conn;
+                    //cmd.CommandText = "LingEdit";
+
+                    //cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    //OdbcParameter param = new OdbcParameter();
+
+                    //cmd.Parameters.Add("lingid", OracleDbType.Int32).Value = Convert.ToInt32(id);
+                    //cmd.Parameters.Add("lingname", OracleDbType.NVarchar2).Value = "C sharp";
+                    ////cmd.Parameters.Add("mensagem", OracleDbType.Varchar2, System.Data.ParameterDirection.ReturnValue);
+
+                    //OracleParameter mensagem = (new OracleParameter("mensagem", OracleDbType.Varchar2, 30));
+                    //mensagem.Direction = System.Data.ParameterDirection.ReturnValue;
+                    //cmd.Parameters.Add(mensagem);
+
+                    ////cmd.Parameters.Add("lingname", OracleDbType.Varchar2);
+                    ////cmd.Parameters.Add("mensagem", OracleDbType.Varchar2);
+                    ////cmd.Parameters["mensagem"].Direction = System.Data.ParameterDirection.ReturnValue;
+
+                    //cmd.ExecuteNonQuery();
+                    ////var mensagem = Convert.ToString(cmd.Parameters["mensagem"].Value);
+
+                    //cmd.Parameters.RemoveAt(0);
+                    ////var mensagem = Convert.ToString(cmd.Parameters["mensagem"].Value);
+
+                    //cmd.Connection.Close();
+
                 }
                 catch (DbUpdateConcurrencyException)
                 {
